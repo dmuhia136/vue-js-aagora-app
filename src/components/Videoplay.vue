@@ -3,13 +3,10 @@
         UID:{{ user.uid }}
         <div ref="video" class="video" >
         </div>
-        <div :style="!user.uid?'hidden':'display:grid'">
-
-            <button @click="pause">Pause</button>
-            <button @click="start">Start</button>
+            <button @click="pause">Stop Video</button>
+            <button @click="start">Resume Video </button>
             <button @click="mute">Mute</button>
             <button @click="resumeAudio">Unmute</button>
-        </div>
     </div>
 </template>
 <script setup>
@@ -20,7 +17,6 @@ const pauseVideo = ref(null)
 onMounted(async () => {
     await props.user.videoTracks.play(video.value)
     await props.user.audioTracks.play(video.value)
-
 })
 const pause=async()=>{
     await props.user.videoTracks.stop(video.value)

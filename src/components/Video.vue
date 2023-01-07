@@ -12,10 +12,9 @@
 </template>
 <script>
 import AgoraRtc from 'agora-rtc-sdk-ng';
-import VideoPlayer from './VideoPlayer.vue';
 const APP_ID = 'ddc52c0fe419478588c8f97c4fa4f45b';
 const CHANNEL = 'chat';
-const TOKEN = '007eJxTYNg73/GaRHLhysilL7/xyETaHv6Z4nUlV3b1wmqu7s1Nv6coMKSkJJsaJRukpZoYWpqYW5haWCRbpFmaJ5ukJZqkmZgmTXi0PbkhkJHBss+ChZEBAkF8FobkjMQSBgYAqlUgsQ==';
+const TOKEN = '007eJxTYNj72W87v/PLKS+Osh7Zs+iT+cmabT+Mf61ufvx+xtdkfc9oBYaUlGRTo2SDtFQTQ0sTcwtTC4tkizRL82STtESTNBPTJGfznckNgYwM0ztPMzEyQCCIz8KQnJFYwsAAAJV+I34=';
 const client = AgoraRtc.createClient({ mode: 'rtc', codec: 'vp8' });
 
 export default {
@@ -56,12 +55,10 @@ export default {
             return user.videoTracks.play(this.$refs.video)
         }
     },
-    components: { VideoPlayer }
 }
 </script>
 
 <script setup>
-import VideoPlayerVue from './VideoPlayer.vue';
 import VideoPlay from './Videoplay.vue'
 </script>
 
