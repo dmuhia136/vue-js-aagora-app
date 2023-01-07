@@ -1,12 +1,8 @@
 <template>
     <div>Video App
         <div v-for="(user, i) in users" >
-            <!-- <VideoPlayerVue  /> -->
             <VideoPlay :user="user" :key="i"/>
-            <!-- <div class="video" @change="videoPlayer(user)" :key="i" ref="video"> -->
-            <!-- {{ user.videoTracks(user) }} -->
-
-            <!-- </div> -->
+            
         </div>
     </div>
 </template>
