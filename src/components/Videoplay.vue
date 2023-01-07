@@ -10,11 +10,11 @@
     </div>
 </template>
 <script setup>
-import { onMounted, ref,onCreated } from 'vue';
+import { onMounted, ref,onCreated,onBeforeMount } from 'vue';
 const props = defineProps(['user'])
 const video = ref(null)
 const pauseVideo = ref(null)
-onCreated(async () => {
+onBeforeMount(async () => {
     await props.user.videoTracks.play(video.value)
     await props.user.audioTracks.play(video.value)
 })
