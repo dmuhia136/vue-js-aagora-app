@@ -15,7 +15,7 @@ const props = defineProps(['user'])
 const video = ref(null)
 const pauseVideo = ref(null)
 onMounted(async () => {
-    await props.user.videoTracks.play(props.user.uid,video.value)
+    await props.user.videoTracks.play(video.value)
     await props.user.audioTracks.play(video.value)
 })
 const pause=async()=>{

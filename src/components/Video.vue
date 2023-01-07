@@ -1,6 +1,6 @@
 <template>
     <div>Video App
-        <div v-for="(user, i) in users" >
+        <div v-for="(user, i) in users" class="grid grid-cols-3">
             <VideoPlay :user="user" :key="i"/>
             
         </div>
