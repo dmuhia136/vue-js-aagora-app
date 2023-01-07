@@ -8,6 +8,7 @@
 </template>
 <script >
 import VideoVue from './components/Video.vue';
+
 export default {
   components: {
     VideoVue
