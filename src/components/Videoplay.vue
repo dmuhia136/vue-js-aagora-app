@@ -1,9 +1,15 @@
 <template>
     <div>
+        UID:{{ user.uid }}
         <div ref="video" class="video" >
         </div>
-        <button @click="pause">Pause</button>
-        <button @click="start">Start</button>
+        <div :style="!user.uid?'hidden':'display:grid'">
+
+            <button @click="pause">Pause</button>
+            <button @click="start">Start</button>
+            <button @click="mute">Mute</button>
+            <button @click="resumeAudio">Unmute</button>
+        </div>
     </div>
 </template>
 <script setup>
@@ -22,6 +28,12 @@ const pause=async()=>{
 }
 const start=async()=>{
     await props.user.videoTracks.play(video.value)
+    await props.user.audioTracks.play(video.value)
+}
+const mute=async()=>{
+await props.user.audioTracks.stop(video.value)
+}
+const resumeAudio=async()=>{
     await props.user.audioTracks.play(video.value)
 }
 </script>

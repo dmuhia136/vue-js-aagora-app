@@ -1,8 +1,8 @@
 <template>
     <div>Video App
-        <div v-for="(user, i) in users">
+        <div v-for="(user, i) in users" >
             <!-- <VideoPlayerVue  /> -->
-            <VideoPlay :user="user" />
+            <VideoPlay :user="user" :key="i"/>
             <!-- <div class="video" @change="videoPlayer(user)" :key="i" ref="video"> -->
             <!-- {{ user.videoTracks(user) }} -->
 
@@ -27,7 +27,7 @@ export default {
         };
     },
     mounted() {
-        client.on("user-joined", this.handleUserJoined);
+        client.on("user-published", this.handleUserJoined);
         client.on("user-left", this.handleUserLeft);
         client.join(APP_ID, CHANNEL, TOKEN, null).then((uid) => Promise.all([AgoraRtc.createMicrophoneAndCameraTracks(), uid])).then(([tracks, uid]) => {
             console.log("agora ui", uid);
@@ -48,8 +48,9 @@ export default {
                 this.users=[...this.users,this.users]
             }
         },
-        // async handleUserLeft(user,mediaType) {
-        // }
+        async handleUserLeft(user) {
+            this.user=this.user.filter((u)=>u.uid !==user.uid)
+        },
         
         async loadVideo(user) {
             return user.videoTracks.play(this.$refs.video)
