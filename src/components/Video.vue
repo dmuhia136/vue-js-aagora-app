@@ -1,5 +1,5 @@
 <template>
-    <div><span className="text-purple-600">Video App</span> 
+    <div>
         <div v-for="(user, i) in users" class="flex ">
             <VideoPlay :user="user" :uid="agora_uid" :key="i"/>
             
@@ -10,7 +10,7 @@
 import AgoraRtc from 'agora-rtc-sdk-ng';
 const APP_ID = 'ddc52c0fe419478588c8f97c4fa4f45b';
 const CHANNEL = 'chat';
-const TOKEN = '007eJxTYNj72W87v/PLKS+Osh7Zs+iT+cmabT+Mf61ufvx+xtdkfc9oBYaUlGRTo2SDtFQTQ0sTcwtTC4tkizRL82STtESTNBPTJGfznckNgYwM0ztPMzEyQCCIz8KQnJFYwsAAAJV+I34=';
+const TOKEN = '007eJxTYJgvxn2k33XjccXLN2zrr1zjuvtoZtV6/Q9v5p3W3TtfgC9QgSElJdnUKNkgLdXE0NLE3MLUwiLZIs3SPNkkLdEkzcQ0KeDg7uSGQEaGtBgbRkYGCATxWRiSMxJLGBgAx7kgvg==';
 const client = AgoraRtc.createClient({ mode: 'rtc', codec: 'vp8' });
 
 export default {

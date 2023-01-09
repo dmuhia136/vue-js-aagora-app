@@ -1,7 +1,7 @@
 <template>
     <div>
-        UID:{{ user.uid }}
-        <div ref="video" :class="user.uid===uid?'w-screen h-screen':'video'" >
+        
+        <div ref="video" :class="user.uid===uid?'w-screen h-screen':'video relative bottom-0 right-0'" >
         </div>
             <button @click="pause" class="text-red-400 p-2">Stop Video</button>
             <button @click="start">Resume Video </button>

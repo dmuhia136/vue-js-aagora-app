@@ -1,5 +1,5 @@
 <template>
-  <div>Vuejs Agora App
+  <div><span v-if="!joinRoom">Vuejs Agora App</span>
     <div v-if="userJoined">
       <VideoVue />
     </div>
