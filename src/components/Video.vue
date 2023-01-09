@@ -1,9 +1,15 @@
 <template>
     <div>
-        <div v-for="(user, i) in users" class="flex ">
-            <VideoPlay :user="user" :uid="agora_uid" :key="i"/>
-            
+        <div v-if="!loading">
+            <div v-for="(user, i) in users" class="flex ">
+                <VideoPlay :user="user" :uid="agora_uid" :key="i"/>
+                
+            </div>
         </div>
+        <div v-else>
+            <span>Loading your video...</span>
+        </div>
+  
     </div>
 </template>
 <script>
@@ -18,14 +24,16 @@ export default {
     data() {
         return {
             agora_uid: null,
-            users: []
+            users: [],
+            loading:false
         };
     },
     mounted() {
+        this.loading=true
         client.on("user-published", this.handleUserJoined);
         client.on("user-left", this.handleUserLeft);
         client.join(APP_ID, CHANNEL, TOKEN, null).then((uid) => Promise.all([AgoraRtc.createMicrophoneAndCameraTracks(), uid])).then(([tracks, uid]) => {
-            console.log("agora ui", uid);
+            
             this.agora_uid=uid;
             const [audioTracks, videoTracks] = tracks;
             this.users = [...this.users, {
@@ -35,7 +43,7 @@ export default {
             }];
             client.publish(tracks);
         });
-
+this.loading=false
     },
     methods: {
         async handleUserJoined(user,mediaType) {
