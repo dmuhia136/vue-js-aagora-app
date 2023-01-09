@@ -1,7 +1,7 @@
 <template>
     <div><span className="text-purple-600">Video App</span> 
         <div v-for="(user, i) in users" class="flex ">
-            <VideoPlay :user="user" :key="i"/>
+            <VideoPlay :user="user" :uid="agora_uid" :key="i"/>
             
         </div>
     </div>
@@ -26,6 +26,7 @@ export default {
         client.on("user-left", this.handleUserLeft);
         client.join(APP_ID, CHANNEL, TOKEN, null).then((uid) => Promise.all([AgoraRtc.createMicrophoneAndCameraTracks(), uid])).then(([tracks, uid]) => {
             console.log("agora ui", uid);
+            this.agora_uid=uid;
             const [audioTracks, videoTracks] = tracks;
             this.users = [...this.users, {
                 uid,

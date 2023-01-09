@@ -3,7 +3,9 @@
     <div v-if="userJoined">
       <VideoVue />
     </div>
-    <div v-else><button @click="joinRoom">Join Channel</button></div>
+    <div v-else>
+      <button @click="joinRoom" className="p-2 font-bold">Join Channel</button>
+    </div>
   </div>
 </template>
 <script >
@@ -18,9 +20,9 @@ export default {
       userJoined: false,
     }
   },
-  methods:{
-    joinRoom(){
-      this.userJoined=true
+  methods: {
+    joinRoom() {
+      this.userJoined = true
     }
   }
 }

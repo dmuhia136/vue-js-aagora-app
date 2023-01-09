@@ -1,9 +1,9 @@
 <template>
     <div>
         UID:{{ user.uid }}
-        <div ref="video" class="video" >
+        <div ref="video" :class="user.uid===uid?'w-screen h-screen':'video'" >
         </div>
-            <button @click="pause" class="text-red-400">Stop Video</button>
+            <button @click="pause" class="text-red-400 p-2">Stop Video</button>
             <button @click="start">Resume Video </button>
             <button @click="mute">Mute</button>
             <button @click="resumeAudio">Unmute</button>
@@ -11,7 +11,7 @@
 </template>
 <script setup>
 import { onMounted, ref,onBeforeMount } from 'vue';
-const props = defineProps(['user'])
+const props = defineProps(['user','uid'])
 const video = ref(null)
 const pauseVideo = ref(null)
 onMounted(async () => {
